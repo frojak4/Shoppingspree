@@ -14,7 +14,15 @@ namespace Shoppingspree
         List<ISellable> itemList = new List<ISellable>()
         {
             new ClothingItem("Hettegenser", 15, 200, "Medium", "Gray"),
-            new ElectronicItem("Nintendo Switch", 5, 300, 12, 3600)
+            new ElectronicItem("Nintendo Switch", 5, 300, 12, 3600),
+            new ClothingItem("T-Shirt", 30, 100, "Large", "Black"),
+            new ClothingItem("Jeans", 25, 150, "32", "Blue"),
+            new ElectronicItem("PlayStation 5", 3, 500, 24, 7200),
+            new ElectronicItem("iPhone 12", 10, 800, 18, 7200),
+            new ClothingItem("Sneakers", 20, 120, "10", "White"),
+            new ElectronicItem("Laptop", 7, 1000, 36, 10800),
+            new ClothingItem("Jacket", 10, 250, "Large", "Green"),
+            new ElectronicItem("Tablet", 8, 350, 10, 4800)
         };
 
         public void Run()
@@ -56,7 +64,7 @@ namespace Shoppingspree
 
             int userInput = Convert.ToInt32(Console.ReadLine());
             userInput--;
-
+            Console.Clear();
             Console.WriteLine($"With taxes this item costs {itemList[userInput].calculatePrice()}. Do you still want it?");
             Console.WriteLine($"(You have {currentUser.getMoney()} money.)");
             Console.WriteLine("1. Yes");
@@ -69,15 +77,18 @@ namespace Shoppingspree
                     if (canAfford(itemList[userInput])){
                         currentUser.addItem(itemList[userInput]);
                         itemList[userInput].reduceAmount();
-                        Console.WriteLine($"You bought {itemList[userInput].getName()} for {itemList[userInput].getPrice()} money");
+                        Console.Clear();
+                        Console.WriteLine($"You bought {itemList[userInput].getName()} for {itemList[userInput].calculatePrice()} money");
                         Console.ReadKey(true);
                     }
                     break;
                 case "2":
+                    Console.Clear();
                     Console.WriteLine("You left the shop cause you broke..");
                     Console.ReadKey(true);
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Invalid input.");
                     Console.ReadKey(true);
                     break;
