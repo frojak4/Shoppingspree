@@ -25,6 +25,7 @@ namespace Shoppingspree
             new ElectronicItem("Tablet", 8, 350, 10, 4800)
         };
 
+        
         public void Run()
         {
 
@@ -81,6 +82,12 @@ namespace Shoppingspree
                         Console.WriteLine($"You bought {itemList[userInput].getName()} for {itemList[userInput].calculatePrice()} money");
                         Console.ReadKey(true);
                     }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You cannot afford this item");
+                        Console.ReadKey(true);
+                    }
                     break;
                 case "2":
                     Console.Clear();
@@ -114,15 +121,14 @@ namespace Shoppingspree
 
         private bool canAfford(ISellable item)
         {
-            if (item.getPrice() <= currentUser.getMoney())
+            if (item.calculatePrice() <= currentUser.getMoney())
             {
-                currentUser.reduceMoney(item.getPrice());
+                currentUser.reduceMoney(item.calculatePrice());
                 return true;
             }
             else
             {
-                Console.WriteLine("You cannot afford this item");
-                Console.ReadKey(true);
+                
                 return false; 
 
             }

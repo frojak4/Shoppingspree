@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Shoppingspree
 {
-    internal class InventoryItem : ISellable
+    internal abstract class InventoryItem : ISellable
     {
         private string Name;
         private int Amount;
